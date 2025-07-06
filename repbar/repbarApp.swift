@@ -14,7 +14,7 @@ struct Exercise: Identifiable {
     var interval: Double  // seconds
 
     var displayInterval: String {
-        "\(name) - \(interval)s"
+        "\(name) - \(interval/60) Minutes"
     }
 }
 
@@ -26,8 +26,8 @@ struct SimpleReminderApp: App {
     @State private var clickedExercise: Exercise?
 
     @State var test_exercises = [
-        Exercise(name: "Squat", interval: 10),
-        Exercise(name: "Push Ups", interval: 60),
+        Exercise(name: "10 squats", interval: 45*60),
+        Exercise(name: "10 push ups", interval: 60*60),
     ]
 
     init() {
@@ -129,7 +129,7 @@ struct MenuContent: View {
     var body: some View {
         VStack(alignment: .leading) {
 
-            Text("\(Int(remainingTime))s")
+            Text("\(Int(remainingTime/60)) Minutes")
 
             ForEach(exercises) {
                 exercise in

@@ -10,8 +10,11 @@ struct Exercise: Identifiable {
     let id = UUID()
     var name: String
     var interval: Double  // seconds
+    var active: Bool = false
+    var reps: Int = 10
 
     var displayInterval: String {
         "\(name) - \(interval/60) Minutes"
     }
 }
+

@@ -21,45 +21,17 @@ struct MenuContent: View {
     var body: some View {
         VStack(alignment: .leading) {
 
-            Text("\(Int(remainingTime/60)) Minutes")
-
-            ForEach(exercises) {
-                exercise in
-                Button("\(exercise.displayInterval)") {
-                    currentExercise = exercise
-                    toggleTimer(exercise.interval)
-                }
+            ForEach($exercises) {
+                $exercise in
+                ExerciseSelector(exercise: $exercise).padding()
             }
 
             Divider()
-
-            Button("🔔 Test Notification") {
-                showReminder()
-            }
-            .keyboardShortcut("t")
-
-            Divider()
-
-            HStack {
-
-                TextField("Exercise Name", text: $newExerciseName)
-
-                Stepper(value: $newExerciseInterval, step: 60) {
-                    Text("\(newExerciseInterval/60) Minutes")
-                }
-
-                Button("Add Exercise") {
-                    exercises.append(
-                        Exercise(name: newExerciseName, interval: Double(newExerciseInterval))
-                    )
-                }
-
-            }
 
             Button("Quit") {
                 NSApp.terminate(nil)
             }
             .keyboardShortcut("q")
-        }
+        }.background(Color.white)
     }
 }

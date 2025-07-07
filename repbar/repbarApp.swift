@@ -16,8 +16,8 @@ struct SimpleReminderApp: App {
     @State private var clickedExercise: Exercise?
 
     @State var test_exercises = [
-        Exercise(name: "10 squats", interval: 45*60),
-        Exercise(name: "10 push ups", interval: 60*60),
+        Exercise(name: "squats", interval: 45*60, reps: 10),
+        Exercise(name: "push ups", interval: 60*60, reps: 10),
     ]
 
     init() {
